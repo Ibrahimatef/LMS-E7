@@ -119,7 +119,7 @@ app.delete('/api/courses/:id', (req, res) => {
 // Function to Validate Input Course Name
 function validateStudent(student) {
     const schema = {
-        name: Joi.string().required().regex(/(?=\S*['-])([a-zA-Z'-]+)/),
+        name: Joi.string().required().regex(/^[a-zA-Z'-]+$/),
         code : Joi.string().required().length(7)
     }
     return Joi.validate(student, schema);
