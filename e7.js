@@ -74,7 +74,7 @@ app.put('/api/courses/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) // error 404 object not found
     {
-        res.status(404).send('THe course with the given id was not found.');
+        res.status(404).send('The course with the given id was not found.');
         return;
     }
 
@@ -130,9 +130,7 @@ function validateStudent(student) {
 
 const students = [
     { id : 1 , name : 'Ibrahim-Atef' , code : '1600012' },
-    { id : 2 , name : 'No-Name\'s' , code : '1600112' },
-    { id : 3 , name : 'Aya\'Atef' , code : '1601112'},
-    { id : 4 , name : 'Ahmed-Atef' , code : '1611112'}
+    { id : 2 , name : 'Ahmed-Atef' , code : '1611112'}
 ];
 
 // get list of students you have
@@ -178,7 +176,7 @@ app.put('/api/students/:id', (req, res) => {
     const student = students.find(c => c.id === parseInt(req.params.id));
     if (!student) // error 404 object not found
     {
-        res.status(404).send('THe student with the given id was not found.');
+        res.status(404).send('The student with the given id was not found.');
         return;
     }
 
