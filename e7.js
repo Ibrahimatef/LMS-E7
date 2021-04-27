@@ -228,7 +228,7 @@ app.get('/web/students/create',(req,res) =>{
 })
 
 app.get('/',(req,res) =>{
-    res.send('Hello World!')
+    res.sendFile(__dirname+"/lms_Start.html")
 })
 
 
