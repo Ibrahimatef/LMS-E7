@@ -1,8 +1,12 @@
 const Joi = require('joi');               
 const express = require('express');     
 const app = express();
+var bodyParser = require('body-parser')
 
+
+app.use(bodyParser.urlencoded( {extended : true }))
 app.use(express.json())
+app.use(express.static('public'))
 
 
 /////////////////////////////////////////////////// Courses ////////////////////////////////////////////////
@@ -11,7 +15,7 @@ function validateCourse(course) {
     const schema = {
         name: Joi.string().min(5).required(),
         code : Joi.string().required().length(6).regex(/^[a-zA-Z]{3}[0-9]{3}$/),
-        description : Joi.string().max(200).optional()
+        description : Joi.string().max(200).allow(null,'')
     }
     return Joi.validate(course, schema);
 }
@@ -42,7 +46,7 @@ app.get('/api/courses/:id',(req,res) => {
 //to add course
 app.post('/api/courses/create',(req,res) => {
     
-   
+    console.log(req.body)
     // validate 
     // If not valid, return 400 bad request
     const { error } = validateCourse(req.body);
@@ -115,7 +119,7 @@ app.delete('/api/courses/:id', (req, res) => {
 // Function to Validate Input Course Name
 function validateStudent(student) {
     const schema = {
-        name: Joi.string().required().regex(/(?=\S*['-])|([a-zA-Z'-]+)/),
+        name: Joi.string().required().regex(/(?=\S*['-])([a-zA-Z'-]+)/),
         code : Joi.string().required().length(7)
     }
     return Joi.validate(student, schema);
@@ -213,6 +217,16 @@ app.delete('/api/students/:id', (req, res) => {
     // Return the same student
     res.send(student);
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////// Web Routes////////////////////////////////////////////////////
+app.get('/web/courses/create',(req,res) =>{
+    res.sendFile(__dirname+"/lms_Course.html")
+})
+
+app.get('/web/students/create',(req,res) =>{
+    res.sendFile(__dirname+"/lms_Student.html")
+})
+
 
 const port = process.env.PORT || 3000
 app.listen(port,()=> console.log(`listening to prot ${port}...`));

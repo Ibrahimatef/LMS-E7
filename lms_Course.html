@@ -70,7 +70,7 @@ input[type=submit]:hover {
 
 .bg {
   /* The image used */
-  background-image: url("courses.jpg");
+  background-image: url("/courses.jpg");
 
   /* Full height */
   height: 100%; 
@@ -95,14 +95,14 @@ input[type=submit]:hover {
     <b>LMS</b>
 </header>
 <div class="container">
-  <form action="/action_page.php">
+  <form action="/api/courses/create" method="POST">
     <h2 style="text-align:center">  Create Course</h2>
     <div class="row">
       <div class="col-25">
         <label for="name">Course Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="name" name="coursename" placeholder="Course name...">
+        <input type="text" id="coursename" name="name" placeholder="Course name...">
       </div>
     </div>
     <div class="row">
@@ -110,7 +110,7 @@ input[type=submit]:hover {
         <label for="code">Course Code</label>
       </div>
       <div class="col-75">
-        <input type="text" id="code" name="coursecode" placeholder="Course Code...">
+        <input type="text" id="coursecode" name="code" placeholder="Course Code...">
       </div>
     </div>
     <div class="row">
@@ -118,11 +118,11 @@ input[type=submit]:hover {
         <label for="description">Description</label>
       </div>
       <div class="col-75">
-        <textarea id="description" name="subject" placeholder="(Optional) Write something..." style="height:200px"></textarea>
+        <textarea id="descriptioncourse" name="description" placeholder="(Optional) Write something..." style="height:200px"></textarea>
       </div>
     </div>
     <div class="row" , style="text-align:center">
-      <input type="submit" value="Submit">
+      <input type="submit" value="Register">
     </div>
   </form>
 </div>
