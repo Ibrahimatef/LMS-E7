@@ -227,6 +227,10 @@ app.get('/web/students/create',(req,res) =>{
     res.sendFile(__dirname+"/lms_Student.html")
 })
 
+app.get('/',(req,res) =>{
+    res.send('Hello World!')
+})
+
 
 const port = process.env.PORT || 3000
 app.listen(port,()=> console.log(`listening to prot ${port}...`));
